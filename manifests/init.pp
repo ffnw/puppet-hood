@@ -2,13 +2,11 @@ class hood (
   String $bandwidth = $hood::params::bandwidth,
 ) inherits hood::params {
 
-  contain batman
-  contain fastd
-  contain dhcp
+  require batman
+  require fastd
+  require dhcp
 
-  class { 'batman': }
-  class { 'fastd': }
-  class { 'dhcp': }
+  create_resources('hood::create', hiera('hood::create', {}))
 
 }
 
