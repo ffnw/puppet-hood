@@ -7,12 +7,12 @@ define hood::create (
   require hood
   require hood::params
 
-  batman::instance { "${title}":
+  batman::instance { $title:
     gw_mode   => 'server',
     bandwidth => $bandwidth,
   }
 
-  dhcp::dhcp { "${title}":
+  dhcp::dhcp { $title:
     interface => "bat-${title}",
     subnet    => $subnet,
     subnet    => $subnet6,
@@ -21,9 +21,9 @@ define hood::create (
   $fastd = $fastd - 1
   if $fastd > 0 {
 
-    $fastd_instances = range("0", "${fastd}")
+    $fastd_instances = range('0', "${fastd}")
     $fastd_instances.each | $instance | {
-      fastd::instance { "${title}":
+      fastd::instance { $title:
         port             => 10000 + $instance,
         batman_interface => "bat-${title}",
       }
