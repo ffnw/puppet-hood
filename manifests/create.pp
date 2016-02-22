@@ -9,13 +9,13 @@ define hood::create (
 
   $ip6 = []
   $subnet6.each | $value | {
-    $ip6 = $ip6 + [ ip_address(ip_network($value, 1)) ]
+    $ip6 = $ip6 + [ ip_network($value, 1) ]
   }
 
   batman::instance { $title:
     gw_mode   => 'server',
     bandwidth => $bandwidth,
-    ip        => ip_address(ip_network($subnet, 1)),
+    ip        => ip_network($subnet, 1),
     ip6       => $ip6,
   }
 
