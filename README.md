@@ -21,7 +21,7 @@ Creates and configures hoods.
 ```puppet
 hood::create { 'ol-nord':
   subnet  => '10.18.8.0/21',
-  subnet6 => '2a03:2260:1001:0800::/53',
+  subnet6 => [ '2a03:2260:1001:0800::/53' ],
 }
 ```
 
@@ -30,7 +30,7 @@ hood::create { 'ol-nord':
 ```puppet
 hood::create { 'ol-nord':
   subnet  => '10.18.8.0/21',
-  subnet6 => '2a03:2260:1001:0800::/53',
+  subnet6 => [ '2a03:2260:1001:0800::/53' ],
   fastd   => 4,
 }
 ```
@@ -39,7 +39,7 @@ hood::create { 'ol-nord':
 
 * define hood::create
   * $subnet
-  * $subnet6
+  * $subnet6 (optional, default [])
   * $fastd (optional, default 1)
 
 ## Limitations
