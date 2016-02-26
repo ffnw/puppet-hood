@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/ffnw/puppet-hood/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
-    {"name":"inkblot-ipcalc","version_requirement":">= 1.2.2"},
+    {"name":"ffnw-ipcalc","version_requirement":">= 0.1.0"},
     {"name":"ffnw-router","version_requirement":">= 0.1.0"},
     {"name":"ffnw-batman","version_requirement":">= 0.1.0"},
     {"name":"ffnw-fastd","version_requirement":">= 0.1.0"},
