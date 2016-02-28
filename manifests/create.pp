@@ -4,8 +4,8 @@ define hood::create (
   Integer       $fastd   = 1,
 ) {
 
-  require hood
-  require hood::params
+  include hood
+  include hood::params
 
   $ip6 = []
   $subnet6.each | $value | {
