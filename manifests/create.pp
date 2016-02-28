@@ -22,7 +22,7 @@ define hood::create (
   dhcp::dhcp { $title:
     interface => "bat-${title}",
     subnet    => $subnet,
-    subnet    => $subnet6,
+    subnet6    => $subnet6,
   }
 
   $fastd = $fastd - 1
