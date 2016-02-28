@@ -12,7 +12,7 @@ define hood::create (
     $ip6 = $ip6 + [ ip_network($value, 1) ]
   }
 
-  batman::instance { $title:
+  batman::interface { $title:
     gw_mode   => 'server',
     bandwidth => $bandwidth,
     ip        => ip_network($subnet, 1),
