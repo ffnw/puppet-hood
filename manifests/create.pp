@@ -29,7 +29,7 @@ define hood::create (
     
     $fastd_instances = range("${fastd[begin]}", "${fastd[end]}")
     $fastd_instances.each | $key, $value | {
-      $fastd_num = $fastd[end] - $value
+      $fastd_num = $value - $fastd[begin]
       fastd::instance { "${title}${fastd_num}":
         port             => $value,
         batman_interface => "bat-${title}",
