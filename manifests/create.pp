@@ -1,7 +1,7 @@
 define hood::create (
-  String        $subnet,
-  Array[String] $subnet6 = [],
-  Integer       $fastd   = 1,
+  String                   $subnet,
+  Array[String]            $subnet6 = [],
+  Hash[String,Integer,2,2] $fastd,
 ) {
 
   include hood
@@ -25,13 +25,13 @@ define hood::create (
     subnet6   => $subnet6,
   }
 
-  $decreased_fastd = $fastd - 1
-  if $fastd > 0 {
-
-    $fastd_instances = range('0', "${decreased_fastd}")
-    $fastd_instances.each | $instance | {
-      fastd::instance { "${title}${instance}":
-        port             => 10000 + $instance,
+  if ($fastd[end] - $fastd[begin]) >= 0 {
+    
+    $fastd_instances = range("${fastd[begin]}", "${fastd[end]}")
+    $fastd_instances.each | $key, $value | {
+      $fastd_num = $fastd[end] - $value
+      fastd::instance { "${title}${fastd_num}":
+        port             => 10000 + $value,
         batman_interface => "bat-${title}",
       }
     }

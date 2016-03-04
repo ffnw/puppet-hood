@@ -22,6 +22,10 @@ Creates and configures hoods.
 hood::create { 'ol-nord':
   subnet  => '10.18.8.0/21',
   subnet6 => [ '2a03:2260:1001:0800::/53' ],
+  fastd   => {
+    begin => 10000
+    end   => 10003
+  },
 }
 ```
 
@@ -31,7 +35,10 @@ hood::create { 'ol-nord':
 hood::create { 'ol-nord':
   subnet  => '10.18.8.0/21',
   subnet6 => [ '2a03:2260:1001:0800::/53' ],
-  fastd   => 4,
+  fastd   => {
+    begin => 10000
+    end   => 10003
+  },
 }
 ```
 
@@ -40,7 +47,7 @@ hood::create { 'ol-nord':
 * define hood::create
   * $subnet
   * $subnet6 (optional, default [])
-  * $fastd (optional, default 1)
+  * $fastd
 
 ## Limitations
 
