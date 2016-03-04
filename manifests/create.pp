@@ -31,7 +31,7 @@ define hood::create (
     $fastd_instances.each | $key, $value | {
       $fastd_num = $fastd[end] - $value
       fastd::instance { "${title}${fastd_num}":
-        port             => 10000 + $value,
+        port             => $value,
         batman_interface => "bat-${title}",
       }
     }
