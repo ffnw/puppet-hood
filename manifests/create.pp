@@ -16,7 +16,7 @@ define hood::create (
     gw_mode   => 'server',
     bandwidth => $bandwidth,
     ip        => ip_network($subnet, 1),
-    ip6       => $subnet6,
+    ip6       => ip_network($subnet6, 1),
   }
 
   dhcp::dhcp { $title:
