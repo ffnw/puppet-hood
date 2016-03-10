@@ -7,9 +7,8 @@ define hood::create (
   include hood
   include hood::params
 
-  $ip6 = []
-  $subnet6.each | $value | {
-    $ip6 = $ip6 + [ ip_network($value, 1) ]
+  $ip6 = $subnet6.map | $value | {
+    ip_network($value, 1)
   }
 
   batman::interface { $title:
