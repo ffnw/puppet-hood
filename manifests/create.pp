@@ -14,7 +14,7 @@ define hood::create (
 
   batman::interface { $title:
     gw_mode   => 'server',
-    bandwidth => $bandwidth,
+    bandwidth => $hood::bandwidth,
     ip        => ip_network($subnet, 1),
     ip6       => $ip6,
   }
