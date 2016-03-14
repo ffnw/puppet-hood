@@ -37,5 +37,7 @@ define hood::create (
 
   }
 
+  gluoncollector::receiver { "bat-${title}": }
+
 }
 
