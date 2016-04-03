@@ -26,6 +26,13 @@ hood::create { 'ol-nord':
     begin => 10000
     end   => 10003
   },
+  tunneldigger => {
+    begin     => 0,
+    end       => 400,
+    address   => '0.0.0.0',
+    port      => 9000,
+    interface => 'eth0',
+  },
 }
 ```
 
@@ -39,6 +46,13 @@ hood::create { 'ol-nord':
     begin => 10000
     end   => 10003
   },
+  tunneldigger => {
+    begin     => 0,
+    end       => 400,
+    address   => '0.0.0.0',
+    port      => 9000,
+    interface => 'eth0',
+  },
 }
 ```
 
@@ -47,7 +61,8 @@ hood::create { 'ol-nord':
 * define hood::create
   * $subnet
   * $subnet6 (optional, default [])
-  * $fastd
+  * $fastd (optional, default disabled)
+  * $tunneldigger (optional, default disabled)
 
 ## Limitations
 

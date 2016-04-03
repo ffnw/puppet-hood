@@ -1,7 +1,8 @@
 define hood::create (
   String                   $subnet,
-  Array[String]            $subnet6 = [],
-  Hash[String,Integer,2,2] $fastd,
+  Array[String]            $subnet6      = [],
+  Hash[String,Integer,2,2] $fastd        = { begin => 0, end => -1 },
+  Hash                     $tunneldigger = { begin => 0, end => -1 },
 ) {
 
   include hood
@@ -35,6 +36,23 @@ define hood::create (
       }
     }
 
+  }
+
+  if ($tunneldigger[end] - $tunneldigger[begin]) >= 0 {
+    tunneldigger::instance { "${title}":
+      address        => $tunneldigger[address],
+      port           => $tunneldigger[port],
+      interface      => $tunneldigger[interface],
+      max_tunnels    => ($tunneldigger[end] - $tunneldigger[begin]),
+      tunnel_id_base => $tunneldigger[begin],
+      session_up     => epp('hood/tunneldigger-up.sh.epp', {
+        batman_interface => "bat-${title}",
+      }),
+      session_down   => epp('hood/tunneldigger-down.sh.epp', {
+        batman_interface => "bat-${title}",
+      }),
+      session_mtuchanged => epp('hood/tunneldigger-mtu.sh.epp'),
+    }
   }
 
   gluoncollector::receiver { "bat-${title}": }
