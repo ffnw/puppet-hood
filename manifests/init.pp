@@ -4,11 +4,13 @@ class hood (
 
   class { 'batman': }
   class { 'fastd': }
+  class { 'tunneldigger': }
   class { 'dhcp': }
   class { 'gluoncollector': }
 
   contain batman
   contain fastd
+  contain tunneldigger
   contain dhcp
   contain gluoncollector
 
