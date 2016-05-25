@@ -6,5 +6,5 @@ INTERFACE="$3"
 MTU="$4"
 
 /bin/ip link set dev $INTERFACE up mtu $MTU
-/usr/local/sbin/batctl -m <%= $batman_interface %> if add $INTERFACE
+/usr/sbin/batctl -m <%= $batman_interface %> if add $INTERFACE
 

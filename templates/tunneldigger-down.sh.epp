@@ -5,5 +5,5 @@ TUNNEL_ID="$1"
 INTERFACE="$3"
 MTU="$4"
 
-/usr/local/sbin/batctl -m <%= $batman_interface %> if del $INTERFACE
+/usr/sbin/batctl -m <%= $batman_interface %> if del $INTERFACE
 
