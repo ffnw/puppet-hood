@@ -7,12 +7,14 @@ class hood (
   class { 'tunneldigger': }
   class { 'dhcp': }
   class { 'gluoncollector': }
+  class { 'hopglassserver': }
 
   contain batman
   contain fastd
   contain tunneldigger
   contain dhcp
   contain gluoncollector
+  contain hopglassserver
 
   create_resources('hood::create', hiera('hood::create', {}))
 

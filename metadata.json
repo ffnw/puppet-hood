@@ -15,6 +15,7 @@
     {"name":"ffnw-fastd","version_requirement":">= 0.1.0"},
     {"name":"ffnw-dhcp","version_requirement":">= 0.1.0"},
     {"name":"ffnw-gluoncollector","version_requirement":">= 0.1.0"},
+    {"name":"ffnw-hopglassserver","version_requirement":">= 0.1.0"},
     {"name":"ffnw-tunneldigger","version_requirement":">= 0.1.0"}
   ],
   "data_provider": null
