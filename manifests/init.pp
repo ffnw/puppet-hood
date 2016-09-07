@@ -16,11 +16,19 @@ class hood (
   contain radvd
   contain hopglassserver
 
+
+  service { 'gluon-collector':
+    ensure => stopped,
+    enable => false,
+  } ->
   file {
     default:
-      ensure => absent;
+      ensure => absent,
+      force  => true;
     '/etc/node-collector.yaml':;
-    '/opt/gluon-collector':
+    '/opt/gluon-collector':;
+    '/var/log/gluon-collector.log':;
+    '/etc/systemd/system/gluon-collector.service':;
   }
 
   service { 'dnsmasq':
