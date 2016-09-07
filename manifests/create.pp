@@ -19,9 +19,14 @@ define hood::create (
     ip6       => $ip6,
   }
 
-  dhcp::dhcp { $title:
-    interface => "bat-${title}",
-    subnet    => $subnet,
+  dhcp::pool { $title:
+    network => ip_network($subnet),
+    mask    => ip_netmask($subnet),
+    range   => [ "%{ip_address(ip_network($subnet, 2))} %{ip_address(ip_broadcast($subnet, 1))}" ],
+    gateway => ip_network($subnet, 1),
+  }
+
+  radvd::interface { "bat-${title}":
     subnet6   => $subnet6,
   }
 
@@ -55,7 +60,6 @@ define hood::create (
     }
   }
 
-  gluoncollector::receiver { "bat-${title}": }
   hopglassserver::interface { "bat-${title}": }
 
 }
