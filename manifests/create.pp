@@ -19,11 +19,12 @@ define hood::create (
     ip6       => $ip6,
   }
 
-  dhcp::pool { $title:
-    network => ip_address(ip_network($subnet)),
-    mask    => ip_netmask($subnet),
-    range   => [ "${ip_address(ip_network($subnet, 2))} ${ip_address(ip_broadcast($subnet, 1))}" ],
-    gateway => ip_address(ip_network($subnet, 1)),
+  dhcp::pool { "bat-$title":
+    network    => ip_address(ip_network($subnet)),
+    mask       => ip_netmask($subnet),
+    range      => [ "${ip_address(ip_network($subnet, 2))} ${ip_address(ip_broadcast($subnet, 1))}" ],
+    gateway    => ip_address(ip_network($subnet, 1)),
+    parameters => [ "interface $title" ],
   }
 
   radvd::interface { "bat-${title}":
