@@ -22,7 +22,7 @@ define hood::create (
   dhcp::pool { $title:
     network => ip_address(ip_network($subnet)),
     mask    => ip_netmask($subnet),
-    range   => [ "%{ip_address(ip_network($subnet, 2))} %{ip_address(ip_broadcast($subnet, 1))}" ],
+    range   => [ "${ip_address(ip_network($subnet, 2))} ${ip_address(ip_broadcast($subnet, 1))}" ],
     gateway => ip_address(ip_network($subnet, 1)),
   }
 
