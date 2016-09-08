@@ -14,7 +14,7 @@
     {"name":"ffnw-batman","version_requirement":">= 0.1.0"},
     {"name":"ffnw-fastd","version_requirement":">= 0.1.0"},
     {"name":"ffnw-radvd","version_requirement":">= 0.1.0"},
-    {"name":"puppetlabs-dhcp","version_requirement":">= 0.4.0"},
+    {"name":"puppet-dhcp","version_requirement":">= 1.0.0"},
     {"name":"ffnw-hopglassserver","version_requirement":">= 0.1.0"},
     {"name":"ffnw-tunneldigger","version_requirement":">= 0.1.0"}
   ],
