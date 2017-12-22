@@ -61,7 +61,7 @@ define hood::create (
     }
   }
 
-  hopglassserver::interface { "bat-${title}": }
+  yanic::interface { "bat-${title}": }
 
 }
 
